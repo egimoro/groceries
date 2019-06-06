@@ -1,0 +1,24 @@
+{% extends "groceries/base.html" %}
+{% csrf_token %}
+   
+{% block content%}
+    <h1>Groceries in the Grocery Store</h1>
+    <table style="width: 100%">
+        <tr>
+            <th></th>
+            <th>Owner</th>
+            <th>Location</th>
+            <th>Date established</th>
+        </tr>
+        {% for grocery in object_list %}
+            <tr> 
+                <td>{{ grocery.store_name }}</td>
+                <td>{{ grocery.owner }}</td>
+                <td>{{ grocery.location }}</td>
+                <td>{{ grocery.date_established }}</td>
+            </tr>
+        {% endfor %}
+
+    </table><br>
+
+{% endblock content%} 

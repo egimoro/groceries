@@ -1,0 +1,11 @@
+{% extends "groceries/base.html" %}
+{% csrf_token %}
+{% block content %}
+    <h3>Grocery item</h3>
+    <p>Grocery Type: {{ object.grocery_type }}</p>
+    <p>Brand: {{ object.brand }}</p>
+    <p>Quantity: {{ object.quantity }}</p>
+    <p>Price: {{ object.price }}</p>
+    <p>Date Ordered: {{ object.date_ordered }}</p>
+    <p>Available: {{ object.is_available }}</p>
+{% endblock content %}
