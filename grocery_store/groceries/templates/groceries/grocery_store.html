@@ -1,9 +1,12 @@
 {% extends "groceries/base.html" %}
-
+{% csrf_token %}
 {% block content %}
-  <h3>Grocery Store</h3>
+<h3>Grocery Store</h3>
   <p>Store name: {{ object.store_name }}</p>
   <p>Owner: {{ object.owner }}</p>
   <p>Location: {{ object.location }}</p>
   <p>Date established: {{ object.date_established }}</p>
+
+  
+  
 {% endblock content%}

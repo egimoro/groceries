@@ -1,5 +1,6 @@
-from django.http import HttpResponseRedirect
-from django.views.generic import (CreateView, DetailView, ListView, UpdateView,
+from django.urls import reverse_lazy
+from groceries.forms import Grocery_storeForm, GroceriesForm
+from django.views.generic import (CreateView, DetailView, ListView, UpdateView, 
                                   DeleteView)
 
 from .models import Grocery_store, Groceries
@@ -37,7 +38,7 @@ class GroceriesDetailView(DetailView):
 
 class Grocery_storeList(ListView):
     model = Grocery_store
-    template_name = 'groceries/grocery_storeList.html'
+    template_name = 'groceries/grocery_storelist.html'
 
     def get_queryset(self):
         return Grocery_store.objects.all()
@@ -49,12 +50,50 @@ class Grocery_storeList(ListView):
 
 class GroceriesList(ListView):
     model = Groceries
-    template_name = 'groceries/groceriesList.html'
+    template_name = 'groceries/grocerieslist.html'
 
     def get_queryset(self):
-        return GroceriesList.objects.all()
+        return Groceries.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context 
+
+
+class Grocery_storeCreate(CreateView):
+    model = Grocery_store
+    form_class = Grocery_storeForm
+    template_name = 'groceries/grocery_store_create.html'
+
+
+class Grocery_storeUpdate(UpdateView):
+    model = Grocery_store
+    form_class = Grocery_storeForm
+    template_name = 'groceries/grocery_store_update.html'
+
+
+class GroceriesCreate(CreateView):
+    model = Groceries
+    form_class = GroceriesForm
+    template_name = 'groceries/groceries_create.html'
+
+
+class GroceriesUpdate(UpdateView):
+    model = Groceries
+    form_class = GroceriesForm
+    template_name = 'groceries/groceries_update.html'
+
+
+class Grocery_storeDelete(DeleteView):
+    model = Grocery_store
+    template_name = 'groceries/grocery_store_delete.html'
+
+    success_url = reverse_lazy('groceries:grocery_storelist')
+
+
+class GroceriesDelete(DeleteView):
+    model = Groceries
+    template_name = 'groceries/groceries_delete.html'
+    success_url = reverse_lazy('groceries:grocerieslist')
+
 

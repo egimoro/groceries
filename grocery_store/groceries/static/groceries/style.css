@@ -1,0 +1,14 @@
+li a {
+    color: aqua;
+}
+
+body {
+    background: blanchedalmond url("images/jr.png") no-repeat;
+}
+
+img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}

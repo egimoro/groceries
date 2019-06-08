@@ -2,20 +2,28 @@
 {% csrf_token %}
    
 {% block content%}
-    <h1>Groceries in the Grocery Store</h1>
+    <h1>Groceries in the Grocery Store(Food: fo,
+        Drinks: dr, Other items: ot)
+    </h1>
     <table style="width: 100%">
         <tr>
-            <th></th>
-            <th>Owner</th>
-            <th>Location</th>
-            <th>Date established</th>
+            <th>Grocery Type</th>
+            <th>Brand</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Date Ordered</th>
+            <th>Available</th>
+            <th>Grocery Store ref</th>
         </tr>
-        {% for grocery in object_list %}
+        {% for item in object_list %}
             <tr> 
-                <td>{{ grocery.store_name }}</td>
-                <td>{{ grocery.owner }}</td>
-                <td>{{ grocery.location }}</td>
-                <td>{{ grocery.date_established }}</td>
+                <td>{{ item.grocery_type }}</td>
+                <td><a href="{% url 'groceries:groceries' item.id %}">{{ item.brand }}</a></td>
+                <td>{{ item.quantity }}</td>
+                <td>{{item.price }}</td>
+                <td>{{ item.date_ordered }}</td>
+                <td>{{ item.is_available }}</td>
+                <td>{{ item.grocery }}</td>
             </tr>
         {% endfor %}
 

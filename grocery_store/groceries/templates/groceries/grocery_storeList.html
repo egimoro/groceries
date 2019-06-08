@@ -12,7 +12,7 @@
         </tr>
         {% for grocery in object_list %}
             <tr> 
-                <td>{{ grocery.store_name }}</td>
+                <td><a href="{% url 'groceries:grocery_store' grocery.id %}">{{ grocery.store_name }}</a></td>
                 <td>{{ grocery.owner }}</td>
                 <td>{{ grocery.location }}</td>
                 <td>{{ grocery.date_established }}</td>

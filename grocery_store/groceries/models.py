@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Grocery_store(models.Model):
@@ -11,10 +12,13 @@ class Grocery_store(models.Model):
 
     def __str__(self):
         return self.store_name
+    
+    def get_absolute_url(self):
+        return reverse('groceries:grocery_store', kwargs={'pk': self.pk}) 
 
         
 class Groceries(models.Model):
-    __tablename__ = 'groceries'
+    __tablename__ = 'groceries' 
 
     food = 'fo'
     drinks = 'dr'
@@ -38,3 +42,6 @@ class Groceries(models.Model):
 
     def __str__(self):
         return self.brand
+        
+    def get_absolute_url(self):
+        return reverse('groceries:groceries', kwargs={'pk': self.pk}) 
