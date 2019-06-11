@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'groceries.apps.GroceriesConfig',
+    'fooditems.apps.FooditemsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,6 +79,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('database'),
+        'USER': os.environ.get('user'),
+        'PASSWORD': os.environ.get('password'),
+        'HOST': ''
+    },
+    'fooditems': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('database6'),
         'USER': os.environ.get('user'),
         'PASSWORD': os.environ.get('password'),
         'HOST': ''

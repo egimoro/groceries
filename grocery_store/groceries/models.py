@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
+import datetime
 
 
 class Grocery_store(models.Model):
@@ -15,8 +17,19 @@ class Grocery_store(models.Model):
     
     def get_absolute_url(self):
         return reverse('groceries:grocery_store', kwargs={'pk': self.pk}) 
+    
+    def was_estblished_recently(self):
+        now = timezone.now()
 
-        
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+     
+    was_estblished_recently.admin_order_field = 'date_established'
+
+    was_estblished_recently.boolean = True
+
+    was_estblished_recently.short_description = 'Established recently?'
+
+       
 class Groceries(models.Model):
     __tablename__ = 'groceries' 
 
@@ -45,3 +58,15 @@ class Groceries(models.Model):
         
     def get_absolute_url(self):
         return reverse('groceries:groceries', kwargs={'pk': self.pk}) 
+    
+    def was_ordered_recently(self):
+        now = timezone.now()
+
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+     
+    was_ordered_recently.admin_order_field = 'date_ordered'
+
+    was_ordered_recently.boolean = True
+
+    was_ordered_recently.short_description = 'Ordered recently?'
+
