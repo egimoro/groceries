@@ -12,10 +12,13 @@
         </tr>
         {% for grocery in object_list %}
             <tr> 
-                <td><a href="{% url 'groceries:grocery_store' grocery.id %}">{{ grocery.store_name }}</a></td>
+                <td>{{ grocery.store_name }}</td>
                 <td>{{ grocery.owner }}</td>
                 <td>{{ grocery.location }}</td>
                 <td>{{ grocery.date_established }}</td>
+                <td><a href="{% url 'groceries:grocery_store' grocery.id %}"><button class="btn btn-info">View Grocery Store</button></a></td>
+                <td><a href="{% url 'groceries:grocery_store_update' grocery.id %}"><button class="btn btn-warning">Edit Grocery Store</button></a></td>
+                <td><a href="{% url 'groceries:grocery_store_delete' grocery.id %}"><button class="btn btn-danger">Delete Grocery Store</button></a></td>
             </tr>
         {% endfor %}
 

@@ -18,12 +18,15 @@
         {% for item in object_list %}
             <tr> 
                 <td>{{ item.grocery_type }}</td>
-                <td><a href="{% url 'groceries:groceries' item.id %}">{{ item.brand }}</a></td>
+                <td>{{ item.brand }}</a></td>
                 <td>{{ item.quantity }}</td>
                 <td>{{item.price }}</td>
                 <td>{{ item.date_ordered }}</td>
                 <td>{{ item.is_available }}</td>
                 <td>{{ item.grocery }}</td>
+                <td><a href="{% url 'groceries:groceries' item.id %}"><button class="btn btn-info"> View item</button></a></td>
+                <td><a href="{% url 'groceries:groceries_update' item.id %}"><button class="btn btn-warning">Edit item</button></a></td>
+                <td><a href="{% url 'groceries:groceries_delete' item.id %}"><button class="btn btn-danger" > Delete item</button></a></td>
             </tr>
         {% endfor %}
 
