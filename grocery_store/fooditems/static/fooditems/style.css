@@ -18,3 +18,8 @@ p {
     font-style: italic;
     color: black;
 }
+
+h2 {
+    color: yellowgreen;
+    font-family: 'Trebuchet MS';
+}

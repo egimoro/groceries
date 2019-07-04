@@ -1,0 +1,14 @@
+{% extends 'fooditems/base.html' %}
+{% csrf_token %}
+{% block content %}
+  <h3>Food Item</h3>
+  <p>Food Type: {{ object.food_type }}</p>
+  <p>Food Price: {{ object.food_price }}</p>
+  <p>Food Description: {{ object.food_description }}</p>
+  <p>Other Details: {{ object.other_details }}</p>
+  <p>Date Ordered: {{ object.date_ordered }}</p>
+  <p>Order Complete: {{ object.order_complete }}</p>
+  <p>Order Delivered: {{ object.order_delivered }}</p>
+  <p>Date Delivered: {{ object.date_delivered }}</p>
+   
+{% endblock content %}

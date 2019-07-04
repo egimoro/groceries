@@ -1,0 +1,31 @@
+{% extends "fooditems/base.html" %}
+{% csrf_token %}
+{% block content %}
+ <h1>Latest Food Items</h1>
+    <ul>
+        <table style="width:150%">
+            <tr>
+                <th>Food Type</th>
+                <th>Food Price</th>
+                <th>Food Description</th>
+                <th>Other Details</th>
+                <th>Date Ordered</th>
+                <th>Order Complete</th>
+                <th>Order Delivered</th>
+                <th>Date Delivered</th>
+            </tr>
+            {% for fooditem in object_list %}
+                <tr>
+                  <td>{{ fooditem.food_type }}</td>
+                  <td>{{ fooditem.food_price }}</td>
+                  <td>{{ fooditem.food_description }}</td>
+                  <td>{{ fooditem.other_details }}</td>
+                  <td>{{ fooditem.date_ordered }}</td>
+                  <td>{{ fooditem.order_complete }}</td>
+                  <td>{{ fooditem.order_delivered }}</td>
+                  <td>{{ fooditem.date_delivered }}</td>
+                </tr>
+            {% endfor %}
+         </table>
+    </ul>
+{% endblock content %}

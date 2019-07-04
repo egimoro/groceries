@@ -1,0 +1,47 @@
+{% extends "fooditems/base.html" %}
+{% csrf_token %}
+
+{% block content %}
+    <h1>Suppliers</h1>
+    <table style="width: 100%">
+        <tr>
+            <th>Supplier name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Other details</th>
+        </tr>
+        {% for supplier in object_list %}
+            <tr>
+              <td>{{supplier.supplier_name}}</td>
+              <td>{{supplier.supplier_phone}}</td>
+              <td>{{supplier.supplier_email}}</td>
+              <td>{{supplier.other_details}}</td>
+              <td><a href="{% url 'fooditems:suppliers' supplier.id %}"><button class="btn btn-info">View Supplier</button></a></td>
+            </tr>
+        {% endfor %}
+    </table><br>
+
+    <h2>Locations</h2>
+    <table style="width: 100%">
+        <tr>
+            <th>City</th>
+            <th>Zip Postcode</th>
+            <th>Country</th>
+            <th>Other Details</th>
+            <th>Suppliers</th>
+            <th>Fooditems</th>
+        </tr>
+     {% for location in object_list %}
+      <tr>
+          <td>{{ location.city }}</td>
+          <td>{{ location.zip_postcode }}</td>
+          <td>{{ location.country }}</td>
+          <td>{{ location.other_details }}</td>
+          <td>{{ location.suppliers }}</td>
+          <td>{{ location.fooditems }}</td>
+          <td><a href="{% url 'fooditems:suppliers' location.id %}"><button class="btn btn-info">View Location</button></a></td>
+      </tr>
+     {% endfor %}
+    </table>
+
+{% endblock content %} 
