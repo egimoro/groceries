@@ -13,6 +13,9 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.supplier_name
+    
+    def get_absolute_url(self):
+        return reverse('fooditems:suppliers', kwargs={'pk': self.pk})
 
 
 class FoodItem(models.Model):
@@ -63,5 +66,8 @@ class Location(models.Model):
 
     def __str__(self):
         return self.city
+    
+    def get_absolute_url(self):
+        return reverse('fooditems:locations', kwargs={'pk': self.pk})
 
     

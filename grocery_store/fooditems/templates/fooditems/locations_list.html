@@ -1,0 +1,33 @@
+{% extends "fooditems/base.html" %}
+{% csrf_token %}
+
+{% block content %}
+    <h1>Locations</h1>
+    <h5><a href="{% url 'fooditems:add_location' %}">Add a Location</a></h5>
+        <ul>
+            <table style="width: 150%">
+                <tr>
+                    <th>City</th>
+                    <th>Zip Postcode</th>
+                    <th>Country</th>
+                    <th>Other details</th>
+                    <th>Food Items</th>
+                    <th>Suppliers</th>
+                </tr>
+            {% for location in object_list %}
+                <tr>
+                    <td>{{location.city}}</td> 
+                    <td>{{location.zip_postcode}}</td>
+                    <td>{{location.country}}</td>
+                    <td>{{location.other_details}}</td>
+                    <td>{{location.fooditems}}</td>
+                    <td>{{location.suppliers}}</td>
+                    <td><a href="{% url 'fooditems:locations' location.id %}"><button class="btn btn-info">View Location</button></a></td>
+                    <td><a href="{% url 'fooditems:update_location' location.id %}"><button class="btn btn-warning">Edit Location</button></a></td>
+                    <td><a href="{% url 'fooditems:delete_location' location.id %}"><button class="btn btn-danger">Delete Location</button></a></td>
+                </tr>
+            {% endfor %}
+            </table>
+        </ul>
+
+{% endblock content %}

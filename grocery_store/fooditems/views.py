@@ -65,14 +65,6 @@ class SupplierList(ListView):
         return Supplier.objects.all()
 
 
-class LocationList(ListView):
-    model = Location
-    template_name = 'fooditems/suppliers_list.html'
-
-    def get_queryset(self):
-        return Location.objects.all()
-
-
 class SupplierDetail(DetailView):
     model = Supplier
     template_name = 'fooditems/suppliers.html'
@@ -82,13 +74,60 @@ class SupplierDetail(DetailView):
         return context
 
 
-class LocationDetail(DetailView):
+class SupplierAdd(CreateView): 
+    model = Supplier
+    form_class = SupplierForm
+    template_name = 'fooditems/add_supplier.html'
+
+
+class SupplierUpdate(UpdateView):
+    model = Supplier
+    form_class = SupplierForm
+    template_name = 'fooditems/update_supplier.html'
+   
+
+class SupplierDelete(DeleteView):
+    model = Supplier
+    template_name = 'fooditems/delete_supplier.html'
+    success_url = reverse_lazy('fooditems:suppliers_list')
+
+
+class LocationList(ListView):
     model = Location
-    template_name = 'fooditems/suppliers.html'
+    template_name = 'fooditems/locations_list.html'
+
+    def get_queryset(self):
+        return Location.objects.all() 
+
+
+class LocationDetails(DetailView):
+    model = Location
+    template_name = 'fooditems/locations.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+class LocationCreate(CreateView):
+    model = Location
+    form_class = LocationForm
+    template_name = 'fooditems/add_location.html'
+
+
+class LocationUpdate(UpdateView):
+    model = Location
+    form_class = LocationForm
+    template_name = 'fooditems/update_location.html'
+
+
+class LocationDelete(DeleteView):
+    model = Location
+    template_name = 'fooditems/delete_location.html'
+    success_url = reverse_lazy('fooditems:locations_list')
+
+
+
 
 
     

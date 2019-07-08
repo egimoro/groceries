@@ -3,7 +3,9 @@
 
 {% block content %}
     <h1>Suppliers</h1>
-    <table style="width: 100%">
+    <h5><a  href="{% url 'fooditems:add_supplier' %}">Add Supplier</a></h5>
+    <ul>
+     <table style="width: 150%">
         <tr>
             <th>Supplier name</th>
             <th>Phone</th>
@@ -12,36 +14,16 @@
         </tr>
         {% for supplier in object_list %}
             <tr>
-              <td>{{supplier.supplier_name}}</td>
-              <td>{{supplier.supplier_phone}}</td>
-              <td>{{supplier.supplier_email}}</td>
-              <td>{{supplier.other_details}}</td>
+              <td>{{ supplier.supplier_name }}</td>
+              <td>{{ supplier.supplier_name }}</td>
+              <td>{{ supplier.supplier_email }}</td>
+              <td>{{ supplier.other_details }}</td>
               <td><a href="{% url 'fooditems:suppliers' supplier.id %}"><button class="btn btn-info">View Supplier</button></a></td>
+              <td><a href="{% url 'fooditems:update_supplier' supplier.id %}"><button class="btn btn-warning">Edit Supplier</button></a></td>
+              <td><a href="{% url 'fooditems:delete_supplier' supplier.id %}"><button class="btn btn-danger">Delete Supplier</button></a></td>
             </tr>
         {% endfor %}
-    </table><br>
-
-    <h2>Locations</h2>
-    <table style="width: 100%">
-        <tr>
-            <th>City</th>
-            <th>Zip Postcode</th>
-            <th>Country</th>
-            <th>Other Details</th>
-            <th>Suppliers</th>
-            <th>Fooditems</th>
-        </tr>
-     {% for location in object_list %}
-      <tr>
-          <td>{{ location.city }}</td>
-          <td>{{ location.zip_postcode }}</td>
-          <td>{{ location.country }}</td>
-          <td>{{ location.other_details }}</td>
-          <td>{{ location.suppliers }}</td>
-          <td>{{ location.fooditems }}</td>
-          <td><a href="{% url 'fooditems:suppliers' location.id %}"><button class="btn btn-info">View Location</button></a></td>
-      </tr>
-     {% endfor %}
     </table>
-
+</ul>
+    
 {% endblock content %} 

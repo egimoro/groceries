@@ -1,0 +1,10 @@
+{% extends "fooditems/base.html" %}
+{% csrf_token %}
+{% block content %}
+    <h3>Location</h3>
+    <p>City: {{ object.city }}</p>
+    <p>Zip Postcode: {{ object.zip_postcode }}</p>
+    <p>Country: {{ object.country }}</p>
+    <p>Other details: {{ object.other_details }}</p>
+
+{% endblock content%}
