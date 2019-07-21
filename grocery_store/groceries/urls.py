@@ -11,7 +11,7 @@ from groceries.views import (Latest_Entry, Grocery_storeDetailView,
 app_name = 'groceries'
 
 urlpatterns = [
-    path('', Latest_Entry.as_view(), name='home'),
+    path('groceries/', Latest_Entry.as_view(), name='home'),
     path('<int:pk>/grocery_store/', Grocery_storeDetailView.as_view(),
          name='grocery_store'),
 
