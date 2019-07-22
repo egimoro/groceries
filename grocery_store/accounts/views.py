@@ -5,6 +5,7 @@ from groceries.models import Grocery_store
 from django.core.mail import send_mail
 import os
 from django.shortcuts import render
+from django.conf import settings
 
 
 class SignUpView(CreateView):
@@ -20,7 +21,8 @@ class Grocery_StoreView(ListView):
 
 def home(request):
     send_mail('Hello from Grocery store app',
-              os.environ.get('ADMINS'),
+              settings.EMAIL_FROM,
               [os.environ.get('NotifyEmail')],
               fail_silently=False)
     return render(request, 'home.html')
+
